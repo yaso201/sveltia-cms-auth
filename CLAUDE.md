@@ -39,7 +39,7 @@
 | Suites de tests | aucune suite · `pnpm check` (cspell, prettier, eslint) (constatée, non exécutée) |
 | Baseline de référence | à re-mesurer (MEP-11) — aucune baseline valide au 10/11/2026 |
 | Dépendances inter-dépôts | consommé par `lanem-cms` (`public/admin/config.yml`, `backend.base_url`) · même code qu'`admission-sveltia`, sans son durcissement XSS |
-| Pièges connus | {{À CONSTATER}} |
+| Pièges connus | D-SEC-CMSAUTH-01 · `site_id` est fourni par l'appelant : seul l'hôte de l'origine du message, vérifié dans la popup, prouve le site — ne jamais revenir à un contrôle sur `site_id` seul · `ALLOWED_DOMAINS` = chaque hôte qui sert `/admin/`, jamais `*.pages.dev` ni `*.workers.dev` · une fusion sur `main` = mise en ligne (Workers Builds) · identifiants OAuth en **secrets** Cloudflare : un déploiement efface les variables en clair du tableau de bord · `src/index.js` = amont `7c34594` + une ligne (`serialize()` du message `authorization:…`) : à reporter à chaque recalage |
 
 ## 4. Règles apprises (à respecter sans les redécouvrir)
 
